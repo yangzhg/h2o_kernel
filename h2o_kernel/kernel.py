@@ -3,7 +3,7 @@ from ipykernel.ipkernel import IPythonKernel
 
 class H2OKernel(IPythonKernel):
     implementation = 'H2O'
-    implementation_version = '1.0.2'
+    implementation_version = '1.0.3'
     language = 'python'
     language_version = '3.6'
     language_info = {
@@ -52,7 +52,10 @@ def reload_h2o():
         conf['port'] = getenv('H2O_PORT')
     if getenv('H2O_URL') is not None:
         conf['url'] = getenv('H2O_URL')
-    h2o.connect(**conf)
+    if not conf:
+        h2o.init()
+    else:
+        h2o.connect(**conf)
     if h2o.connection() is None:
         raise Exception('start H2O kernel failed!')
     del conf
