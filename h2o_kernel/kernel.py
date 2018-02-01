@@ -3,7 +3,7 @@ from ipykernel.ipkernel import IPythonKernel
 
 class H2OKernel(IPythonKernel):
     implementation = 'H2O'
-    implementation_version = '1.0.1'
+    implementation_version = '1.0.2'
     language = 'python'
     language_version = '3.6'
     language_info = {
