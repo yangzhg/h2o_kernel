@@ -14,8 +14,11 @@ class H2OKernel(IPythonKernel):
     banner = "H2O kernel"
 
     def start(self):
-        self.shell.run_cell(self.get_init(), store_history=False, silent=True)
-        super().start()
+        result = self.shell.run_cell(self.get_init(), store_history=False, silent=False)
+        if result.success:
+            IPythonKernel.start(self)
+        else:
+            result.raise_error()
 
     def get_init(self):
         """
@@ -50,6 +53,8 @@ def reload_h2o():
     if getenv('H2O_URL') is not None:
         conf['url'] = getenv('H2O_URL')
     h2o.connect(**conf)
+    if h2o.connection() is None:
+        raise Exception('start H2O kernel failed!')
     del conf
     del config
     del default_conf
