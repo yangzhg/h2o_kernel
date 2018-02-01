@@ -11,7 +11,7 @@ setup(
     long_description=readme,
     author='Yang Zhengguo',
     author_email='yangzhengguo01@baidu.com',
-    url='https://github.com/jupyter/echo_kernel',
+    url='https://github.com/yangzhg/h2o_kernel',
     install_requires=[
         'h2o', 'IPython', 'ipykernel'
     ],
