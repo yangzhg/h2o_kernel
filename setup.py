@@ -5,7 +5,7 @@ with open('README.rst') as f:
 
 setup(
     name='h2o_kernel',
-    version='1.0.1',
+    version='1.0.2',
     packages=['h2o_kernel'],
     description='H2o kernel for Jupyter',
     long_description=readme,
